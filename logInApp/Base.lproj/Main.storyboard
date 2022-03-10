@@ -10,7 +10,7 @@
         <!--LogInVewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="LogInVewController" customClass="ViewController" customModule="logInApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="LogInVewController" customClass="LoginViewController" customModule="logInApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,13 +24,19 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="0vC-3C-Xyn"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFZ-c3-kkr">
                                         <rect key="frame" x="0.0" y="61" width="260" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="hWX-bc-4ge"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -41,7 +47,8 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="2ts-vI-G3T" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="mU2-DF-c6R"/>
+                                    <action selector="logInPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="wkv-wU-FCC"/>
+                                    <segue destination="2ts-vI-G3T" kind="presentation" identifier="showWelcomeVC" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="mU2-DF-c6R"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="nJr-xI-oxc">
@@ -54,7 +61,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="forgotUserNameButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="JyI-Ua-0jl"/>
+                                            <action selector="forgotUserNamePressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="hTB-kq-ndH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhR-2I-jbN">
@@ -64,7 +71,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="forgotPasswordButtonPresseed" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DE-2K-zcx"/>
+                                            <action selector="forgotPasswordPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="anE-P0-x2L"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -108,8 +115,8 @@
                                     <color key="baseForegroundColor" red="0.92988885310000002" green="0.92988885310000002" blue="0.92988885310000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="logOutButtonPressed" destination="2ts-vI-G3T" eventType="touchUpInside" id="oGu-1P-O93"/>
-                                    <segue destination="obB-1Z-PQu" kind="unwind" unwindAction="unwindWithSegue:" id="SbQ-uk-YaO"/>
+                                    <action selector="logOutButtonPressed" destination="2ts-vI-G3T" eventType="touchUpInside" id="BqU-dA-lEs"/>
+                                    <segue destination="obB-1Z-PQu" kind="unwind" unwindAction="unwindSegueWithSegue:" id="M3E-CP-C8G"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWT-GU-AzD">
@@ -133,7 +140,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="iUG-F4-g8X"/>
                     <connections>
-                        <outlet property="welcomeUserNameLabel" destination="uWT-GU-AzD" id="Xuu-h9-H5q"/>
+                        <outlet property="welcomeLabel" destination="uWT-GU-AzD" id="5i4-Bz-fhL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mbq-YG-wHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
