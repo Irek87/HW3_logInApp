@@ -6,15 +6,23 @@
 //
 
 struct User {
-    let userName: String
+    let login: String
     let password: String
     let person: Person
+    
+    static func getUserData() -> User {
+        User(login: "1", password: "1", person: Person(name: "Irek", surname: "Iunusov", job: "FKU", hobby: "sport & Swift"))
+    }
 }
 
 struct Person {
-    let name = "Irek"
-    let surname = "Iunusov"
-    let job = "FKU"
-    let hobby = "Sport & Swift"
+    let name: String
+    let surname: String
+    let job: String
+    let hobby: String
+    
+    var fullName: String {
+        "\(name) \(surname)"
+    }
 }
 

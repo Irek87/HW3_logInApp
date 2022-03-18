@@ -15,16 +15,17 @@ class InfoViewController: UIViewController {
     @IBOutlet var hobbyLabel: UILabel!
     
     // MARK: Public properties
-    var name = ""
-    var surname = ""
-    var job = ""
-    var hobby = ""
+    var user: User!
+//    var name = ""
+//    var surname = ""
+//    var job = ""
+//    var hobby = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = "Hello, my name is \(surname) \(name)"
-        jobLabel.text = "I work at \(job)"
-        hobbyLabel.text = "My hobbies are \(hobby)"
+        nameLabel.text = "Hello, my name is \(user.person.fullName)"
+        jobLabel.text = "I work at \(user.person.job)"
+        hobbyLabel.text = "My hobbies are \(user.person.hobby)"
     }
 
 }
